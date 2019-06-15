@@ -1,0 +1,126 @@
+
+  {% extends "home/header.html" %}
+
+  {% block content %}
+  <style>
+    body{
+      background-image:url("/static/home/images/bg1.jpg");
+      color:white;
+    }
+    .jumbotron{
+      background-color:transparent;
+    }
+
+    .display-4{
+
+
+      font-family: 'Cinzel', serif;
+
+
+    }
+    </style>
+  <div class="container">
+
+      <div class="jumbotron" id="desc">
+      <h2 class="display-4">Comic Colourization</h2>
+      <p class="lead">Not so confident about your digital colouring skills? We've got you covered! Browse and select the image you want coloured, upload the image, click on the convert button, and let our neural network do the rest!</p>
+      <!-- <button type="button"id="start" name="button">Get Started</button> -->
+      </div>
+
+
+
+    <!-- <form class="" method="post" onsubmit="formsub()" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input class="btn" type="file"id="imgInp" name="image">
+      <button type="submit" class="btn" id="conv" name="button">Upload</button>
+      <button type="button"class="btn" id="result" onclick="document.getElementById('res').src='/static/home/downloaded_images/{{ name }}'" name="button">Convert</button>
+
+
+
+      <p id="imageupload">Uploading Image... Please wait</p>
+      <div class="spinner-border" style="width: 13rem; height: 13rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+
+    </form>
+    {% if url %}
+    <img src="{{ url }}" id="source" width="256px"height="256px">
+    {% endif %}
+
+     {% load colour %}
+    {% fname name url %}
+
+    <img src="#" id="res">
+    <a id="download" class="btn" href="/static/home/downloaded_images/{{ name }}" download> Download </a> -->
+    <div class="row">
+      <div class="col-6">
+        <div class="jumbotron" id="j1">
+        <h2>GRAYSCALE</h2>
+        <p class="lead">Have a grayscale image you want to colour?</p>
+        <a class="btn" href="/grayscale/">Click Here </a>
+        <!-- <button type="button"id="start" name="button">Get Started</button> -->
+        </div>
+
+      </div>
+
+      <div class="col-6">
+        <div class="jumbotron"id="j2" >
+        <h2>LINE DRAWING</h2>
+        <p class="lead">Have a line drawing you want to colour?</p>
+        <a class="btn" href="/line/">Click Here </a>
+        <!-- <button type="button"id="start" name="button">Get Started</button> -->
+        </div>
+
+      </div>
+
+    </div>
+    <!-- JQuery -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
+
+      <script type="text/javascript">
+
+
+        $( document ).ready(function() {
+           $("#imageupload").hide()
+           $("#conv").hide();
+           $(".spinner-border").hide();
+           $("#res").hide();
+           // $("#loading").hide();
+           $("#download").hide();
+
+    });
+    function formsub()
+    {
+      $("#source").show();
+      $("#result").show();
+    }
+    $("#imgInp").change(function(){
+        $("#conv").show();
+        $("#res").hide();
+        $("#download").hide();
+
+
+     });
+     $("#conv").click(function(){
+       // $("#source").show();
+       $(".spinner-border").show();
+       $("#imageupload").show();
+       $("#result").show();
+     })
+        $("#result").click(function(){
+          $("#res").show();
+          $("#result").hide();
+          $("#download").show();
+        })
+      </script>
+
+
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,2 @@
+SketchAI is a web based tool suite that aims to show how AI can be potentially used to make the lives of artists easier by automating certain tasks.<br/>
+The automated tasks are- Sketch Simplification, Comic Colorization, SKetch Shading, Landscape Generation.

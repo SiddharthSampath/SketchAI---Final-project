@@ -1,0 +1,39 @@
+body, html {
+  height: 100%;
+  background-image:url("/static/home/images/bg7.jpg");
+  /*linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.2)), */
+
+
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  /*background-repeat: no-repeat;*/
+  background-size: cover;
+  background-blend-mode:darken;
+}
+
+.jumbotron{
+
+  font-family: 'Russo One', sans-serif;
+
+  background-color:transparent;
+}
+.display-4{
+
+  color: #0D0D6F;
+
+}
+h1{
+  font-family: 'Tangerine', cursive;
+  font-size: 70px;
+}
+p{
+  font-size: 30px;
+
+}
+img{
+
+}

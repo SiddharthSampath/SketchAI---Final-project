@@ -1,0 +1,141 @@
+{% extends "home/header.html" %}
+
+{% block content %}
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Landscapes</title>
+      <!-- bs4 css -->
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- Popper JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
+      <!-- TensorFlow.js script -->
+
+      <!-- canvas script -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.js"></script>
+      <!-- main css -->
+      <!-- <link rel = "stylesheet" href="main.css" > -->
+      <style media="screen">
+      body{
+        background-image:url("/static/home/images/bg4.jpg");
+        color:white;
+      }
+      .jumbotron{
+        background-color:transparent;
+      }
+      .display-4{
+
+
+        font-family: 'Cinzel', serif;
+
+
+      }
+      #range-slider{
+        background-color: white;
+      }
+      </style>
+   </head>
+   <body>
+    <!-- <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+      <a class="navbar-brand font-weight-bold" href="#">Pix2Pix</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="cats.html">Cats</a>
+          <a class="nav-item nav-link" href="facades.html">Facades</a>
+          <a class="nav-item nav-link" href="shoes.html">Shoes</a>
+          <a class="nav-item nav-link active" href="pokemon.html">Pokemon</a>
+          <a class="nav-item nav-link " href="celeb.html">Celebrity</a>
+          <a class="nav-item nav-link" href="scene.html">Scene</a>
+        </div>
+      </div>
+    </nav> -->
+      <div class="container">
+        <div class="jumbotron" id="desc">
+        <h2 class="display-4">CANVAS DOODLE</h2>
+        <!-- <p class="lead">Not so confident about your digital colouring skills? We've got you covered! Browse and select the image you want coloured, upload the image, click on the convert button, and let our neural network do the rest!</p> -->
+        <!-- <button type="button"id="start" name="button">Get Started</button> -->
+        <a class="btn btn-light-blue" style="color:black;" href="/scenery/">Back</a>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class ="col text-center">
+      <h4 id ='status' >Loading Model</h4>
+      <div id = "bar" class="loader loader--style1" title="0">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+        <path opacity="0.2" fill="#0000ff" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+          s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+          c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+        <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+          C22.32,8.481,24.301,9.057,26.013,10.047z">
+          <animateTransform attributeType="xml"
+            attributeName="transform"
+            type="rotate"
+            from="0 20 20"
+            to="360 20 20"
+            dur="0.5s"
+            repeatCount="indefinite"/>
+          </path>
+        </svg>
+      </div>
+      </div>
+   </div>
+      <div class="row">
+
+	    <div class= "col text-center">
+            <div class="btn-group" style = "margin-top:25px;">
+               <canvas id="canvas" width="300" height="300" class="canvas" style="border:1px solid #b9bfc9"></canvas>
+	       <canvas id="gCanvas" width="300" height="300" class="canvas" style="border:1px solid #b9bfc9; margin-left:20px"></canvas>
+	      </div>
+	   </div>
+	   </div>
+	 <!-- <div class = "row">
+            <div class="col text-center">
+            <div class="btn-group text-center" style = 'margin-top:30px;margin-right:370px;'>
+
+
+                <p><strong>Stroke Width</strong></p>
+               <input id="range-slider" type="range" value = '3' min = '1' max = '5' style ='margin-top:10px;'>&nbsp;&nbsp;
+               <button type="button" id = "clear" class="btn" onclick ='erase()' disabled><strong>Clear</strong></button>
+
+            </div>
+		 </div> -->
+     <div class="row">
+       <div class="col-9">
+         <center>
+
+         <input id="range-slider" type="range" value = '3' min = '1' max = '5' style ='margin-top:10px;'>&nbsp;&nbsp;<br>
+         <p><strong>Stroke Width</strong></p>
+         <button type="button" id = "clear" class="btn btn-light-blue" style="color:black;" onclick ='erase()' disabled><strong>Clear</strong></button>
+         <center>
+       </div>
+
+     </div>
+
+
+	</div>
+   </body>
+   <!-- main script -->
+   <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/0.11.6/tf.min.js">
+
+   </script>
+   {% load static %}
+   <script src = "{% static 'home/js/main.js' %}" >
+  </script>
+
+  <script type="text/javascript">
+  $(window).on('load', function(){
+     prepareCanvas();
+     start("/static/home/images/mttest.jpg", "/static/home/model/tensorflowjs/model.json");
+   });
+  </script>
+</html>
+{% endblock %}

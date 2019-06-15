@@ -1,0 +1,104 @@
+
+{% extends "home/header.html" %}
+
+{% block content %}
+<style>
+  body{
+    background-image:url("/static/home/images/shattered-island.gif");
+    color:white;
+  }
+  .jumbotron{
+    background-color:transparent;
+  }
+  .display-4{
+
+
+    font-family: 'Cinzel', serif;
+
+
+  }
+</style>
+  <div class="container">
+
+      <div class="jumbotron" id="desc">
+      <h2 class="display-4">Sketch Simplification</h2>
+      <p class="lead">Want to simplify your rough sketches? This tool helps you do just that!</p>
+      <!-- <button type="button"id="start" name="button">Get Started</button> -->
+      </div>
+
+
+
+    <form class="" method="post" onsubmit="formsub()" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input class="btn" type="file"id="imgInp" name="image">
+      <button type="submit" class="btn" id="conv" name="button">Upload</button>
+      <button type="button"class="btn" id="result" onclick="document.getElementById('res').src='/static/home/downloaded_images/{{ name }}'" name="button">Convert</button>
+
+
+      <!-- <img src="#" id="blah"> -->
+      <p id="imageupload">Uploading Image... Please wait</p>
+      <div class="spinner-border" style="width: 13rem; height: 13rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+
+    </form>
+    {% if url %}
+    <img src="{{ url }}" id="source"width="256px"height="256px">
+    {% endif %}
+
+     {% load simplify %}
+    {% fname name url %}
+
+    <img src="#" id="res" width="256px"height="256px">
+    <a id="download" class="btn" href="/static/home/downloaded_images/{{ name }}" download> Download </a>
+
+
+    <!-- JQuery -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
+
+      <script type="text/javascript">
+
+
+        $( document ).ready(function() {
+           $("#imageupload").hide()
+           $("#conv").hide();
+           $(".spinner-border").hide();
+           $("#res").hide();
+           $("#download").hide();
+           $("#loading").hide();
+
+    });
+    function formsub()
+    {
+      $("#source").show();
+      $("#result").show();
+    }
+    $("#imgInp").change(function(){
+        $("#conv").show();
+        $("#res").hide();
+        $("#download").hide();
+
+
+     });
+     $("#conv").click(function(){
+       $("#source").show();
+       $(".spinner-border").show();
+       $("#imageupload").show();
+       $("#result").show();
+     })
+        $("#result").click(function(){
+          $("#res").show();
+          $("#result").hide();
+          $("#download").show();
+        })
+      </script>
+
+
+
+{% endblock %}
